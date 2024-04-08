@@ -1,11 +1,19 @@
 class Wall extends AABB {
  
-   Wall(float x, float y) {
-   this.x = x;
-   this.y = y;
-   float sizeX = random(50, 200);
-   float sizeY = random(50, 200);
-   setSize(sizeX, sizeY);
+   Wall() {
+    x = random(-1000, 1000);
+    y = random(-1000, 1000);
+    w = random(50, 350);
+    h = random(50, 350);
+    setSize(w, h);
+  }
+  
+   Wall(float x, float y, float w, float h) {
+    this.x = x;
+    this.y = y;
+    this.w = w;
+    this.h = h;
+    setSize(w, h);
   }
   
   void update() {
