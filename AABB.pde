@@ -37,11 +37,11 @@ class AABB {
     edgeB = y + halfH;
   }
   
-  //void calcAngleToMouse() {
-  //  float dx = camera.x + mouseX/zoomAmount - x;
-  //  float dy = camera.y + mouseY/zoomAmount - y;
-  //  angle = atan2(dy, dx);
-  //}
+  void calcAngleToMouse() {
+    float dx = camera.x + mouseX - x;
+    float dy = camera.y + mouseY - y;
+    angle = atan2(dy, dx);
+  }
 
   boolean checkCollision(AABB other) {
     if (edgeR < other.edgeL) return false;
@@ -111,6 +111,8 @@ class AABB {
     return result;
   }
 
+  // applyFix(findOverlapFix(Player)); // USE WHEN 
+
   void applyFix(PVector fix) {
     x += fix.x;
     y += fix.y;
@@ -123,6 +125,8 @@ class AABB {
       velocity.y = 0;
       if (fix.y < 0) {
         // If we move the player up, we must have hit a floor.
+        
+        // isGrounded = true;
       }
       if (fix.y > 0) {
         // If we move the player down, we must have hit our head on a ceiling.
