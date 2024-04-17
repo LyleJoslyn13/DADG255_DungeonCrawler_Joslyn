@@ -28,26 +28,26 @@ class Room {
     // RIGHT WALLS
     Wall w3 = new Wall(w1.x + w/2 + w1.w/2, y + wallHeight/2, wallThickness, wallHeight);
     walls.add(w3);
-    Wall w4 = new Wall(w1.x + w/2 + w1.w/2, w3.y + w3.h + gapSize/2, wallThickness, wallHeight);
+    Wall w4 = new Wall(w1.x + w/2 + w1.w/2, w3.y + w3.h + gapSize/2, wallThickness, wallHeight + wallThickness*2);
     walls.add(w4);
-    d2 = new Door(w1.x + w/2 + w1.w/2, y + h/2 - gapSize/4, wallThickness);
+    d2 = new Door(w1.x + w/2 + w1.w/2, y + h/2 - gapSize/4 - wallThickness/2, wallThickness);
     doors.add(d2);
     
     // BOTTOM WALLS
-    Wall w5 = new Wall(x + wallWidth/2, y + wallThickness*32.825, wallWidth, -wallThickness);
+    Wall w5 = new Wall(x + wallWidth/2, y + wallThickness/2 + h - gapSize/2, wallWidth, wallThickness);
     walls.add(w5);
-    Wall w6 = new Wall(w1.x + gapSize/2 + w1.w, y + wallThickness*32.825, w - w/2 - gapSize/2, wallThickness);
+    Wall w6 = new Wall(w1.x + gapSize/2 + w1.w, y + wallThickness/2 + h - gapSize/2, wallWidth, wallThickness);
     walls.add(w6);
-    d3 = new Door(x + w/2 - gapSize/4, y + wallThickness*32.825, wallThickness);
+    d3 = new Door(x + w/2 - gapSize/4, y + wallThickness + h - gapSize/2 - wallThickness/2, wallThickness);
     doors.add(d3);
     
     
     // LEFT WALLS
-    Wall w7 = new Wall(w1.x/28, y + wallHeight/2, wallThickness, wallHeight);
+    Wall w7 = new Wall(w1.x + w/2 + w1.w/2 - w + gapSize/2, y + wallHeight/2, wallThickness, wallHeight);
     walls.add(w7);
-    Wall w8 = new Wall(w1.x/28, y + wallHeight + gapSize, wallThickness , wallHeight);
+    Wall w8 = new Wall(w1.x + w/2 + w1.w/2 - w + gapSize/2, y + wallHeight + gapSize, wallThickness , wallHeight + wallThickness*2);
     walls.add(w8);
-    d4 = new Door(x + 8, y + h/2 - gapSize/4, wallThickness);
+    d4 = new Door(w1.x + w/2 + w1.w/2 - w + gapSize/2, y + h/2 - gapSize/4 - wallThickness/2, wallThickness);
     doors.add(d4);
   }
   
@@ -57,7 +57,7 @@ class Room {
     if(player.checkCollision(d1)) {
       if(!topWall) {
         topWall = true;
-        Room r = new Room(x, y - h + wallHeight/1.9);
+        Room r = new Room(x, y - h + wallHeight/2);
         rooms.add(r);
         r.bottomWall = true;
       }
@@ -67,7 +67,7 @@ class Room {
     if(player.checkCollision(d2)) {
       if(!rightWall) {
         rightWall = true;
-        Room r = new Room(x + w - wallWidth/2, y);
+        Room r = new Room(x + w - wallWidth/2 + gapSize/2, y);
         rooms.add(r);
         r.leftWall = true;
       }
@@ -78,21 +78,21 @@ class Room {
     if(player.checkCollision(d3)) {
       if(!bottomWall) {
         bottomWall = true;
-        Room r = new Room(x, y + wallHeight*2.425);
+        Room r = new Room(x, y + h - gapSize + wallHeight/2);
         rooms.add(r);
-        r.bottomWall = true;
+        r.topWall = true;
       }
     }
     
-    //// COLLISION WITH LEFT DOOR                              DOOR DOESNT WORK // CHECK ROOM BOUNDRIES
-    //if(player.checkCollision(d2)) {
-    //  if(!rightWall) {
-    //    rightWall = true;
-    //    Room r = new Room(x + w - wallWidth/2, y);
-    //    rooms.add(r);
-    //    r.leftWall = true;
-    //  }
-    //}
+    // COLLISION WITH LEFT DOOR                              DOOR DOESNT WORK // CHECK ROOM BOUNDRIES
+    if(player.checkCollision(d4)) {
+      if(!leftWall) {
+        leftWall = true;
+        Room r = new Room(x - w + wallWidth/2 - gapSize/2, y);
+        rooms.add(r);
+        r.rightWall = true;
+      }
+    }
     
   }  
 }

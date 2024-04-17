@@ -4,7 +4,7 @@ class Rocket extends AABB {
   float accX, accY;
   
   float timeToHome = .75;
-  float lifeTime = 1;
+  float lifeTime = 3;
   boolean isHoming = false;
   
   Rocket(float xPos, float yPos, float angle) {
