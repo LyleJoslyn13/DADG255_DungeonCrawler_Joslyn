@@ -12,7 +12,11 @@
 
 //ENEMY SPAWN
 //-on entrance to a new room
-//-types of enemys??
+//ENEMY TYPES
+//-Homing??
+//-Shooting??
+//-Bouncing??
+//-Split on death??
 
 //LOCKING DOORS
 //-untill all enemies are killed
@@ -23,8 +27,12 @@
 //-item boosts?? based on amount of rooms? change rate of money earned??
 
 //WEAPON SYSTEM
+//-Switch active weapons
+//-Weapon Invenory
+//---interactable with store purchases
+//WEAPON TYPES
 //-Rockets -- DONE
 //-Sword slash??
 //-Machine Gun??
 //-Expolsion / mine??
-//-
+//-flamethrower??
