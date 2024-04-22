@@ -50,8 +50,8 @@ class Rocket extends AABB {
   }
   
   void storeAngleToMouse() {
-    float dx = camera.x + mouseX - x;
-    float dy = camera.y + mouseY - y;
+    float dx = scenePlay.camera.x + mouseX - x;
+    float dy = scenePlay.camera.y + mouseY - y;
     accelAngle = atan2(dy, dx); 
   }
   

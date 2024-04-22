@@ -38,8 +38,8 @@ class AABB {
   }
   
   void calcAngleToMouse() {
-    float dx = camera.x + mouseX - x;
-    float dy = camera.y + mouseY - y;
+    float dx = scenePlay.camera.x + mouseX - x;
+    float dy = scenePlay.camera.y + mouseY - y;
     angle = atan2(dy, dx);
   }
 

@@ -61,7 +61,7 @@ class Player extends AABB {
        //SPAWN
        for (int i = 0; i< 4; i++) {
         Rocket r = new Rocket(x, y, angle);
-        rockets.add(r);
+        scenePlay.rockets.add(r);
         }
        burstCD = 0.35;
        } else {
