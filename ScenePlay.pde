@@ -10,20 +10,26 @@ ArrayList<Rocket> rockets = new ArrayList();
 ArrayList<Shockwave> shockwaves = new ArrayList();
 ArrayList<Door> doors = new ArrayList();
 ArrayList<Room> rooms = new ArrayList();
+
+float roomDelay = 0.01;
+boolean shouldSpawn = true;
   
   ScenePlay() {
    player = new Player(width/2, height/2); 
    camera = new Camera(player);
    hud = new HUD();
-   
-   
-   Room r = new Room(-camera.x, -camera.y);      //Creates Spawn Room
-   rooms.add(r);
   }
   
   void update() {
         
      // SPAWN ALL OBJECTS UNDER THIS LINE //
+     
+     roomDelay -= dt;
+     if(roomDelay <= 0 && shouldSpawn) {
+       Room r = new Room(-camera.x, -camera.y);      //Creates Spawn Room
+       rooms.add(r);
+       shouldSpawn = false;
+     }
      
     //pushMatrix Below
     pushMatrix();
@@ -87,7 +93,10 @@ ArrayList<Room> rooms = new ArrayList();
       }
     
     player.update();
-     
+    
+    if(scenePlay == null){
+      println("aaaaaaa");
+    }
   }
   
   

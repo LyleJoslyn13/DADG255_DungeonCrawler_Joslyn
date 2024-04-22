@@ -15,7 +15,7 @@ class Wall extends AABB {
     this.h = h;
     setSize(w, h);
   }
-  
+
   void update() {
    
     

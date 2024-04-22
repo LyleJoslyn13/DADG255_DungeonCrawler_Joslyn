@@ -16,6 +16,7 @@ import ddf.minim.ugens.*;
 SceneTitle sceneTitle;
 ScenePlay scenePlay;
 SceneGameOver sceneGameOver;
+ScenePause scenePause;
 
 Minim minim;
 //AudioPlayer MainMenu;
@@ -48,6 +49,10 @@ void draw() {
     sceneTitle.update();
     if(sceneTitle != null) sceneTitle.draw(); // this extra if statement exists because the sceneTitle.update() might result in the scene switching...
   }
+  else if(scenePause != null){
+    scenePause.update();
+    if(scenePause != null) scenePause.draw(); // this extra if statement exists because the sceneGameOver.update() might result in the scene switching...
+  }
   else if(scenePlay != null){
     scenePlay.update();
     if(scenePlay != null) scenePlay.draw(); // this extra if statement exists because the scenePlay.update() might result in the scene switching...
@@ -56,6 +61,7 @@ void draw() {
     sceneGameOver.update();
     if(sceneGameOver != null) sceneGameOver.draw(); // this extra if statement exists because the sceneGameOver.update() might result in the scene switching...
   }
+  
  
   // Prep for next frame //
   Keyboard.update();
@@ -72,16 +78,29 @@ void switchToTitle(){                      // setting the scene to title screen 
   sceneTitle = new SceneTitle();
   scenePlay = null;
   sceneGameOver = null;
+  scenePause = null;
 }
 void switchToPlay(){                      // setting the scene to Gameplay screen //
   scenePlay = new ScenePlay();
   sceneTitle = null;
   sceneGameOver = null;
+  scenePause = null;
 }
 void switchToGameOver(){
   sceneGameOver = new SceneGameOver();
   scenePlay = null;
   sceneTitle = null;
+  scenePause = null;
+}
+void switchToPause(){
+  scenePause = new scenePause();
+  sceneTitle = null;
+  sceneGameOver = null;
+}
+void switchToPlayFromPause(){
+  sceneTitle = null;
+  sceneGameOver = null;
+  scenePause = null;
 }
 
 void keyPressed() {

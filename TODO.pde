@@ -13,9 +13,11 @@
 //ENEMY SPAWN
 //-on entrance to a new room
 //ENEMY TYPES
-//-Homing??
-//-Shooting??
-//-Bouncing??
+//-3 state enemy:
+//---if player within 20m-10m of enemy - shoot
+//---if player within 10m - run away
+//---if player beyond 20m - come closer
+
 //-Split on death??
 
 //LOCKING DOORS
@@ -35,4 +37,4 @@
 //-Sword slash??
 //-Machine Gun??
 //-Expolsion / mine??
-//-flamethrower??
+//-flamethrower  REQUIRED FOR PARTICLES!!!!!
