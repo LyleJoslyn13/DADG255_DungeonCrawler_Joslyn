@@ -6,7 +6,7 @@ class ScenePause {
   
   void update(){
     
-    }
+    
   }
   
   void draw(){

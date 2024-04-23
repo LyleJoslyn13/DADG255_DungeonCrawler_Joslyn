@@ -93,7 +93,7 @@ void switchToGameOver(){
   scenePause = null;
 }
 void switchToPause(){
-  scenePause = new scenePause();
+  scenePause = new ScenePause();
   sceneTitle = null;
   sceneGameOver = null;
 }
