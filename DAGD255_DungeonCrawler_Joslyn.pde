@@ -96,10 +96,12 @@ void switchToPause(){
   scenePause = new ScenePause();
   sceneTitle = null;
   sceneGameOver = null;
+  scenePause.pauseHUD.handle = false;
 }
 void switchToPlayFromPause(){
   sceneTitle = null;
   sceneGameOver = null;
+  scenePlay.playerHUD.handle = false;
   scenePause = null;
 }
 
@@ -119,3 +121,11 @@ void mousePressed() {
 void mouseReleased() {
   Mouse.handleKeyUp(Mouse.LEFT);
 }
+
+boolean checkCollision(Shockwave s, Enemy e) {       // pythagorean theorem in code (see discord chatroom: course-discussion) //
+    float dx = s.x - e.x;
+    float dy = s.y - e.y;
+    float dis = sqrt(dx * dx + dy * dy);
+    if(dis <= s.radius + e.radius) return true;
+    return false;
+  }

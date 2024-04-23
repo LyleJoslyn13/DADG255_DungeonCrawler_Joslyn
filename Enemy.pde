@@ -1,9 +1,11 @@
 class Enemy extends AABB {
  
+  float radius = 15;
+  
   Enemy(float x, float y) {
    this.x = x;
    this.y = y;
-   setSize(150, 150);
+   setSize(30, 30);
   }
   
   void update() {

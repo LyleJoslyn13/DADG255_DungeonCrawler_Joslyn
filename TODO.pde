@@ -1,11 +1,11 @@
 //SETTING UP THE STORE
 //-interact with currency system and weapon system
-//need to set up game states
-//NEW GAME STATES: switchToPauseState() and switchtoPlayStateFromPauseState() 
+//need to set up game states------------------------------------------------------------------DONE
+//NEW GAME STATES: switchToPauseState() and switchtoPlayStateFromPauseState()----------------DONE
 
-//GAME STATES
+//GAME STATES---------------------------------------------DONE
 
-//-Game Pause
+//-Game Pause---------------------------------------------DONE
 //---else if(pauseScene != null)
 //---else if(playScence != null) update
 //---pause takes Priority
@@ -33,7 +33,7 @@
 //-Weapon Invenory
 //---interactable with store purchases
 //WEAPON TYPES
-//-Rockets -- DONE
+//-Rockets ---------------------------------------DONE
 //-Sword slash??
 //-Machine Gun??
 //-Expolsion / mine??

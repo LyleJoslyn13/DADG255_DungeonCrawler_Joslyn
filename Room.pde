@@ -75,6 +75,8 @@ class Room {
       scenePlay.doors.add(d4);
     }
     
+    Enemy e = new Enemy(x,y);
+    scenePlay.enemies.add(e);
   }
   
   void update() {

@@ -2,7 +2,7 @@ class ScenePlay {
   
 Player player;
 Camera camera;
-HUD hud;
+HUD playerHUD;
 
 ArrayList<Enemy> enemies = new ArrayList();
 ArrayList<Wall> walls = new ArrayList();
@@ -17,7 +17,7 @@ boolean shouldSpawn = true;
   ScenePlay() {
    player = new Player(width/2, height/2); 
    camera = new Camera(player);
-   hud = new HUD();
+   playerHUD = new HUD();
   }
   
   void update() {
@@ -77,10 +77,12 @@ boolean shouldSpawn = true;
      s.update();
     }
     
-    //for(int i = 0; i< enemies.size(); i++) {
-    // Enemy e = enemies.get(i);
-    // e.update();
-    //}
+    for(int i = 0; i< enemies.size(); i++) {
+     Enemy e = enemies.get(i);
+     e.update();
+     
+     if(e.isDead) enemies.remove(i);
+    }
     
      for (int i = 0; i < doors.size(); i++) {
       Door d = doors.get(i);
@@ -124,10 +126,10 @@ boolean shouldSpawn = true;
     d.draw();
   }
   
-  //for(int i = 0; i< enemies.size(); i++) {
-  // Enemy e = enemies.get(i);
-  // e.draw();
-  //}
+  for(int i = 0; i< enemies.size(); i++) {
+   Enemy e = enemies.get(i);
+   e.draw();
+  }
   
   player.draw(); 
   
@@ -136,8 +138,8 @@ boolean shouldSpawn = true;
   
   
   // DRAW HUD
-  hud.update();
-  hud.draw();
+  playerHUD.update();
+  playerHUD.draw();
     
   }   
 }

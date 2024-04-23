@@ -1,5 +1,7 @@
 class Shockwave {
  
+  ArrayList<Enemy> enemiesCopy = new ArrayList();
+  
   float x, y;
   float radius = 10;
   boolean isDead = false;
@@ -9,6 +11,7 @@ class Shockwave {
   Shockwave(float x, float y) {
     this.x = x;
     this.y = y;
+    enemiesCopy = scenePlay.enemies;
   }
   
   void update() {
@@ -17,6 +20,17 @@ class Shockwave {
     radius += 300 * dt;
     
     if(alpha <= 0) isDead = true;
+    
+    for(int i = 0; i< enemiesCopy.size(); i++) {
+     Enemy e = enemiesCopy.get(i);
+     e.update();
+     
+     if(checkCollision(this, e)){
+       e.isDead = true;
+     }
+    }
+    
+     
   }
   
   void draw() {
