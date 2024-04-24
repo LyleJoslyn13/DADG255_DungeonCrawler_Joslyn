@@ -11,6 +11,9 @@ class Room {
   float wallWidth = w - w/2 - gapSize/2;
   float wallHeight = h - h/2 - gapSize/2;
   
+  float yRange = random(100, 450);
+  float xRange = random(100, 850);
+  
   
   Room(float xPos, float yPos) {
     
@@ -75,7 +78,7 @@ class Room {
       scenePlay.doors.add(d4);
     }
     
-    Enemy e = new Enemy(x,y);
+    Enemy e = new Enemy(x + xRange, y + yRange);
     scenePlay.enemies.add(e);
   }
   

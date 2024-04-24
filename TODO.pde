@@ -15,7 +15,7 @@
 //ENEMY TYPES
 //-3 state enemy:
 //---if player within 20m-10m of enemy - shoot
-//---if player within 10m - run away
+//---if player within 10m - run away                             DISTANCE IN RADIAL COLLISION -- MULTIPLY ACCELANGLE BY -1 TO REVERSE DIRECTION
 //---if player beyond 20m - come closer
 
 //-Split on death??
@@ -37,4 +37,4 @@
 //-Sword slash??
 //-Machine Gun??
 //-Expolsion / mine??
-//-flamethrower  REQUIRED FOR PARTICLES!!!!!
+//-flamethrower  REQUIRED FOR PARTICLES!!!!! ---------------------DONE

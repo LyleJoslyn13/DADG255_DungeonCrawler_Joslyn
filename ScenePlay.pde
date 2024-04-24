@@ -10,6 +10,7 @@ ArrayList<Rocket> rockets = new ArrayList();
 ArrayList<Shockwave> shockwaves = new ArrayList();
 ArrayList<Door> doors = new ArrayList();
 ArrayList<Room> rooms = new ArrayList();
+ArrayList<Flamethrower> flamethrowers = new ArrayList();
 
 float roomDelay = 0.01;
 boolean shouldSpawn = true;
@@ -93,6 +94,22 @@ boolean shouldSpawn = true;
       Room r = rooms.get(i);
       r.update();
       }
+      
+     for(int i = 0; i < flamethrowers.size(); i++) {
+       Flamethrower f = flamethrowers.get(i);
+       f.update();
+       
+        for(int j = 0; j< enemies.size(); j++) {
+          Enemy e = enemies.get(j);
+          e.update();
+      
+         if(f.checkCollision(e)) {
+          e.isDead = true;
+         }
+        }
+   
+     if(f.isDead) flamethrowers.remove(f);
+     } 
     
     player.update();
     
@@ -105,6 +122,11 @@ boolean shouldSpawn = true;
    
   
   void draw() {
+    
+  for(int i = 0; i < flamethrowers.size(); i++) {
+   Flamethrower f = flamethrowers.get(i);
+   f.draw();
+  }
    
   for(int i = 0; i< walls.size(); i++) {
    Wall w = walls.get(i);

@@ -5,6 +5,7 @@ class Player extends AABB {
   float burstCD = .35;
   int numBursts = 3;
   boolean isBursting;
+  boolean isLighting;
   
   Player(float xPos, float yPos){ 
    x = xPos;
@@ -31,8 +32,15 @@ class Player extends AABB {
     if(Keyboard.onDown(Keyboard.Q)) {
       isBursting = true;
     }
+    if(Mouse.isDown(Mouse.LEFT)) {
+      isLighting = true;
+    }
+      else isLighting = false;
+    
+    
     
     spawnRocketBurst();
+    spawnFlames();
     
     x += velocity.x * dt;
     y += velocity.y * dt;
@@ -71,6 +79,18 @@ class Player extends AABB {
      }
     }
    }
+   
+   void spawnFlames(){
+     if(isLighting){
+      Flamethrower f1 = new Flamethrower(x, y, angle);
+       scenePlay.flamethrowers.add(f1);
+      Flamethrower f2 = new Flamethrower(x, y, angle + .1);
+       scenePlay.flamethrowers.add(f2);
+      Flamethrower f3 = new Flamethrower(x, y, angle - .1);
+       scenePlay.flamethrowers.add(f3);
+    }
+    
+  }
   
   
  @Override void applyFix(PVector fix) {
