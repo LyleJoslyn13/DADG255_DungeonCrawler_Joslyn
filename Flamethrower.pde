@@ -8,7 +8,7 @@ class Flamethrower extends AABB {
    float cone = random(-.5,.5);
  
   Flamethrower(float xPos, float yPos, float angle) { 
-    super();
+    //super();
     x = xPos;
     y = yPos;
     

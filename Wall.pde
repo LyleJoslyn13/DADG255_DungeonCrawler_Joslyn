@@ -1,5 +1,7 @@
 class Wall extends AABB {
  
+  int identifier;
+  
    Wall() {
     x = random(-1000, 1000);
     y = random(-1000, 1000);

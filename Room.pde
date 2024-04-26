@@ -26,10 +26,12 @@ class Room {
     Wall w1 = new Wall(x + wallWidth/2, y + wallThickness/2, wallWidth, wallThickness);
     if(scenePlay != null){
       scenePlay.walls.add(w1);
+      w1.identifier = 1;
     }
     Wall w2 = new Wall(w1.x + gapSize/2 + w1.w, y + wallThickness/2, wallWidth, wallThickness);
     if(scenePlay != null){ 
       scenePlay.walls.add(w2);
+      w2.identifier = 2;
     }
     d1 = new Door(x + w/2 - gapSize/4, y + wallThickness/2, wallThickness);
     if(scenePlay != null){
@@ -40,10 +42,12 @@ class Room {
     Wall w3 = new Wall(w1.x + w/2 + w1.w/2, y + wallHeight/2, wallThickness, wallHeight);
     if(scenePlay != null){ 
       scenePlay.walls.add(w3);
+      w3.identifier = 3;
     }
     Wall w4 = new Wall(w1.x + w/2 + w1.w/2, w3.y + w3.h + gapSize/2, wallThickness, wallHeight + wallThickness*2);
     if(scenePlay != null){ 
       scenePlay.walls.add(w4);
+      w4.identifier = 4;
     }
     d2 = new Door(w1.x + w/2 + w1.w/2, y + h/2 - gapSize/4 - wallThickness/2, wallThickness);
     if(scenePlay != null){
@@ -54,10 +58,12 @@ class Room {
     Wall w5 = new Wall(x + wallWidth/2, y + wallThickness/2 + h - gapSize/2, wallWidth, wallThickness);
     if(scenePlay != null){ 
       scenePlay.walls.add(w5);
+      w5.identifier = 5;
     }
     Wall w6 = new Wall(w1.x + gapSize/2 + w1.w, y + wallThickness/2 + h - gapSize/2, wallWidth, wallThickness);
     if(scenePlay != null){ 
       scenePlay.walls.add(w6);
+      w6.identifier = 6;
     }
     d3 = new Door(x + w/2 - gapSize/4, y + wallThickness + h - gapSize/2 - wallThickness/2, wallThickness);
     if(scenePlay != null){
@@ -68,10 +74,12 @@ class Room {
     Wall w7 = new Wall(w1.x + w/2 + w1.w/2 - w + gapSize/2, y + wallHeight/2, wallThickness, wallHeight);
     if(scenePlay != null){
       scenePlay.walls.add(w7);
+      w7.identifier = 7;
     }
     Wall w8 = new Wall(w1.x + w/2 + w1.w/2 - w + gapSize/2, y + wallHeight + gapSize, wallThickness , wallHeight + wallThickness*2);
     if(scenePlay != null){
       scenePlay.walls.add(w8);
+      w8.identifier = 8;
     }
     d4 = new Door(w1.x + w/2 + w1.w/2 - w + gapSize/2, y + h/2 - gapSize/4 - wallThickness/2, wallThickness);
     if(scenePlay != null){

@@ -11,14 +11,14 @@
 //---pause takes Priority
 
 //ENEMY SPAWN
-//-on entrance to a new room
+//-on entrance to a new room        RANDOMIZE!!!!!
 //ENEMY TYPES
-//-3 state enemy:
+//-3 state enemy:-----------------------------------------------------DONE
 //---if player within 20m-10m of enemy - shoot
 //---if player within 10m - run away                             DISTANCE IN RADIAL COLLISION -- MULTIPLY ACCELANGLE BY -1 TO REVERSE DIRECTION
 //---if player beyond 20m - come closer
 
-//-Split on death??
+//-Split on death------------------------DONE
 
 //LOCKING DOORS
 //-untill all enemies are killed
@@ -34,7 +34,5 @@
 //---interactable with store purchases
 //WEAPON TYPES
 //-Rockets ---------------------------------------DONE
-//-Sword slash??
-//-Machine Gun??
-//-Expolsion / mine??
+//-Machine Gun??-----------------------------------------DONE
 //-flamethrower  REQUIRED FOR PARTICLES!!!!! ---------------------DONE

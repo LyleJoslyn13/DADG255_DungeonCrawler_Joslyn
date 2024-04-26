@@ -3,9 +3,11 @@ class Player extends AABB {
   int level = 1;
   
   float burstCD = .35;
+  float gunCD = .1;
   int numBursts = 3;
   boolean isBursting;
   boolean isLighting;
+  boolean isShooting;
   
   Player(float xPos, float yPos){ 
    x = xPos;
@@ -36,11 +38,17 @@ class Player extends AABB {
       isLighting = true;
     }
       else isLighting = false;
+     
+    if(Mouse.isDown(Mouse.RIGHT)) {
+      isShooting = true;
+    }
+      else isShooting = false;
     
     
     
     spawnRocketBurst();
     spawnFlames();
+    spawnMachineGun();
     
     x += velocity.x * dt;
     y += velocity.y * dt;
@@ -92,6 +100,16 @@ class Player extends AABB {
     
   }
   
+  void spawnMachineGun(){
+     if(isShooting){
+       gunCD -= dt;
+        if(gunCD <= 0) {
+          Bullet b = new Bullet(x, y, angle);
+           scenePlay.bullets.add(b);
+          gunCD = .1;
+        }
+     }
+  }
   
  @Override void applyFix(PVector fix) {
     x += fix.x;

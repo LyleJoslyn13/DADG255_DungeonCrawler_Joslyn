@@ -116,10 +116,13 @@ void keyReleased() {
 void mousePressed() {
   if(mouseButton == LEFT)
   Mouse.handleKeyDown(Mouse.LEFT);
+  if(mouseButton == RIGHT)
+  Mouse.handleKeyDown(Mouse.RIGHT);
 }
 
 void mouseReleased() {
   Mouse.handleKeyUp(Mouse.LEFT);
+  Mouse.handleKeyUp(Mouse.RIGHT);
 }
 
 boolean checkCollision(Shockwave s, Enemy e) {       
