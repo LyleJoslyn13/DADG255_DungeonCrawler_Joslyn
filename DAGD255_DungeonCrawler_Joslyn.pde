@@ -1,9 +1,20 @@
 // This Program plays an Dungeon Crawler Game
 // Copyright Lyle Joslyn 2024
-// Sprites by: Lyle Joslyn
-//SOUND CREDITS
 
-//CONTROLS
+// SOUND CREDITS
+// Main Menu Music by: Japanese Breakfast - Sable Main Menu // https://www.youtube.com/watch?v=eaIJ9iYq1fc
+// Game Over Sound by: FromSoftware - Dark Souls Death SFX // https://www.youtube.com/watch?v=j_nV2jcTFvA
+// Collecting Coins Sound by: SEGA - Sonic Ring SFX // https://www.youtube.com/watch?v=n9GImjHkLmE
+
+
+// CONTROLS
+// W - Move Up
+// A - Move Left
+// S - Move Down
+// D - Move Right
+// HOLD Left Click - Fire Machine Gun
+// HOLD Right Click - Fire FlameThrower 
+// Q - Fire Rockets
 
 //SOUND FX LIBARY
 import ddf.minim.*;
@@ -19,7 +30,9 @@ SceneGameOver sceneGameOver;
 ScenePause scenePause;
 
 Minim minim;
-//AudioPlayer MainMenu;
+AudioPlayer MainMenu;
+AudioPlayer GameOver;
+AudioPlayer Coin;
 
 float dt = 0;
 float prevTime = 0;
@@ -33,8 +46,10 @@ void setup() {
   
   // AUDIO FILE SETUP BELOW
   minim = new Minim(this);
-  //Slash = minim.loadFile("Bloody Sword.mp3");
-  
+  MainMenu = minim.loadFile("Main_Menu.mp3");
+  GameOver = minim.loadFile("Game_Over.mp3");
+  Coin = minim.loadFile("Coin.mp3");
+  MainMenu.loop();
   }
   
   
@@ -96,7 +111,8 @@ void switchToPause(){
   scenePause = new ScenePause();
   sceneTitle = null;
   sceneGameOver = null;
-  scenePause.pauseHUD.handle = false;
+  scenePause.pauseHUD.handleRoomB = false;
+  scenePause.pauseHUD.handleFB = false;
 }
 void switchToPlayFromPause(){
   sceneTitle = null;

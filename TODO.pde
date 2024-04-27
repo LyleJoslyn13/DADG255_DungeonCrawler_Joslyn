@@ -1,5 +1,12 @@
-//SETTING UP THE STORE
-//-interact with currency system and weapon system
+//Kill Player
+//fix menu screen
+//add sound effects
+
+
+
+//SETTING UP THE STORE-------------------------------------------------------DONE
+//-interact with currency system 
+//-interact with weapon types
 //need to set up game states------------------------------------------------------------------DONE
 //NEW GAME STATES: switchToPauseState() and switchtoPlayStateFromPauseState()----------------DONE
 
@@ -11,8 +18,8 @@
 //---pause takes Priority
 
 //ENEMY SPAWN
-//-on entrance to a new room        RANDOMIZE!!!!!
-//ENEMY TYPES
+//-on entrance to a new room        RANDOMIZE!!!!! ------------------------------------------------------DONE
+//ENEMY TYPES-------------------------------------------------------------------------------DONE
 //-3 state enemy:-----------------------------------------------------DONE
 //---if player within 20m-10m of enemy - shoot
 //---if player within 10m - run away                             DISTANCE IN RADIAL COLLISION -- MULTIPLY ACCELANGLE BY -1 TO REVERSE DIRECTION
@@ -20,19 +27,12 @@
 
 //-Split on death------------------------DONE
 
-//LOCKING DOORS
-//-untill all enemies are killed
-//-happens when a new room is spawned
+//CURRENCY SYSTEM----------------------------------DONE
+//-Money dropped enemy kills
 
-//CURRENCY SYSTEM
-//-Money dropped on room clear and enemy kills
-//-item boosts?? based on amount of rooms? change rate of money earned??
 
-//WEAPON SYSTEM
-//-Switch active weapons
-//-Weapon Invenory
+//WEAPON TYPES--------------------------------------------------------DONE
 //---interactable with store purchases
-//WEAPON TYPES
 //-Rockets ---------------------------------------DONE
 //-Machine Gun??-----------------------------------------DONE
 //-flamethrower  REQUIRED FOR PARTICLES!!!!! ---------------------DONE

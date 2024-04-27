@@ -14,9 +14,18 @@ ArrayList<Room> rooms = new ArrayList();
 ArrayList<Flamethrower> flamethrowers = new ArrayList();
 ArrayList<Bullet> bullets = new ArrayList();
 ArrayList<EnemyBullet> enemybullets = new ArrayList();
+ArrayList<Money> moneys = new ArrayList();
 
 float roomDelay = 0.01;
 boolean shouldSpawn = true;
+
+float playerIframes = 2;
+boolean isInvincible;
+
+boolean isFlamethrower = false;
+boolean isRocket = false;
+
+boolean isFullHealth = true;
   
   ScenePlay() {
    player = new Player(width/2, height/2); 
@@ -29,11 +38,16 @@ boolean shouldSpawn = true;
      // SPAWN ALL OBJECTS UNDER THIS LINE //
      
      roomDelay -= dt;
+     playerIframes -= dt;
+     
      if(roomDelay <= 0 && shouldSpawn) {
        Room r = new Room(-camera.x, -camera.y);      //Creates Spawn Room
        rooms.add(r);
        shouldSpawn = false;
      }
+     
+     if(playerIframes > 0) isInvincible = true;
+     else isInvincible = false;
      
     //pushMatrix Below
     pushMatrix();
@@ -178,14 +192,46 @@ boolean shouldSpawn = true;
      Enemy e = enemies.get(i);
      e.update();
      
-     if(e.isDead) enemies.remove(i);
+     if(e.checkCollision(player)){
+       if(isInvincible == false){
+         player.g -= 50;
+         player.r += 50;
+         e.isDead = true;
+        //player.isDead = true; 
+       }
+     }
+     
+     if(e.isDead){
+       enemies.remove(i);
+       if(e.enemyType == 0){
+         Money m1 = new Money(e.x, e.y);
+         moneys.add(m1);
+         Money m2 = new Money(e.x - random(10,20), e.y - random(10,20));
+         moneys.add(m2);
+         Money m3 = new Money(e.x + random(10,20), e.y + random(10,20));
+         moneys.add(m3);
+       }
+     }
     }
     
     for(int i = 0; i< splitenemies.size(); i++) {
      SplitEnemy se = splitenemies.get(i);
      se.update();
      
-     if(se.isDead) splitenemies.remove(i);
+     if(se.checkCollision(player)){
+       if(isInvincible == false){
+         player.g -= 50;
+         player.r += 50;
+         se.isDead = true;
+         //player.isDead = true; 
+       }
+     }
+     
+     if(se.isDead){
+       splitenemies.remove(i);
+       Money m = new Money(se.x, se.y);
+         moneys.add(m);
+     }
     }
     
      for (int i = 0; i < doors.size(); i++) {
@@ -193,10 +239,18 @@ boolean shouldSpawn = true;
       d.update();
      }
      
-      for (int i = 0; i < rooms.size(); i++) {
+     for (int i = 0; i < rooms.size(); i++) {
       Room r = rooms.get(i);
       r.update();
-      }
+      
+      //for(int j = 0; j< enemies.size(); j++) {
+      //    Enemy e = enemies.get(j);
+      //    if(e.isDead){
+      //     println("enemydied"); 
+      //     r.enemyCount--;
+      //    }
+      //}
+     }
       
      for(int i = 0; i < flamethrowers.size(); i++) {
        Flamethrower f = flamethrowers.get(i);
@@ -271,18 +325,42 @@ boolean shouldSpawn = true;
      eb.update();
      
        if(eb.checkCollision(player)) {
-         player.isDead = true; 
-         println("Playerdead");
+         player.g -= 50;
+         player.r += 50;
+         eb.isDead = true;
+         //player.isDead = true; 
+         //println("Playerdead");
        }
        
        if(eb.isDead) enemybullets.remove(i);
      }
+     
+     for(int i = 0; i< moneys.size(); i++) {
+     Money m = moneys.get(i);
+     m.update();
+     
+       if(m.checkCollision(player)) {
+         m.isDead = true; 
+         player.moneyCount++;
+         Coin.play();
+         Coin.rewind();
+         //println("moneyCollected");
+       }
+       
+       if(m.isDead) moneys.remove(i);
+     }
     
     player.update();
     
-    if(scenePlay == null){
-      println("aaaaaaa");
-    }
+    if(player.isDead) {
+        switchToGameOver();
+        GameOver.play();
+        GameOver.rewind();
+      }
+      
+    //if(scenePlay == null){
+    //  println("aaaaaaa");
+    //}
   }
   
   
@@ -333,6 +411,11 @@ boolean shouldSpawn = true;
   for(int i = 0; i< enemybullets.size(); i++) {
    EnemyBullet eb = enemybullets.get(i);
    eb.draw();
+  }
+  
+  for(int i = 0; i< moneys.size(); i++) {
+   Money m = moneys.get(i);
+   m.draw();
   }
   
   player.draw(); 

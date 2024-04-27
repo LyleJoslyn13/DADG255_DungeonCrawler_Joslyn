@@ -1,6 +1,6 @@
 class Enemy extends AABB {
  
-  int enemyType = 1;
+  int enemyType;
   
   float radius = 15;
   
@@ -21,8 +21,8 @@ class Enemy extends AABB {
   final int RUNNING_AWAY = 2;
   
   Enemy(float x, float y) {
-   //int rand = (int)random(0,2);
-   //enemyType = rand;
+   int rand = (int)random(0,2);
+   enemyType = rand;
     
    this.x = x;
    this.y = y;
@@ -34,6 +34,12 @@ class Enemy extends AABB {
     velocity.x = random(-150, 150);
     velocity.y = random(-150, 150); 
    }
+   
+   //if(checkCollision(scenePlay.player)){
+   //  isDead = true;
+   //}
+   //else isDead = false;
+   
   }
   
   void update() {

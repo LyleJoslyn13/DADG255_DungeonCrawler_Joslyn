@@ -7,6 +7,7 @@ class SceneGameOver {
   void update(){
     if(Keyboard.onDown(Keyboard.SPACE)) {
       switchToPlay();
+      GameOver.pause();
     }
   }
   

@@ -11,8 +11,10 @@ class Room {
   float wallWidth = w - w/2 - gapSize/2;
   float wallHeight = h - h/2 - gapSize/2;
   
-  float yRange = random(100, 450);
-  float xRange = random(100, 850);
+  float yRange;
+  float xRange;
+  
+  //float enemyCount = 0;
   
   
   Room(float xPos, float yPos) {
@@ -85,13 +87,23 @@ class Room {
     if(scenePlay != null){
       scenePlay.doors.add(d4);
     }
-    
-    Enemy e = new Enemy(x + xRange, y + yRange);
-    scenePlay.enemies.add(e);
+    RandomizeEnemySpawn();
+    Enemy e1 = new Enemy(x + xRange, y + yRange);
+    scenePlay.enemies.add(e1);
+    //enemyCount++;
+    RandomizeEnemySpawn();
+    Enemy e2 = new Enemy(x + xRange, y + yRange);
+    scenePlay.enemies.add(e2);
+    RandomizeEnemySpawn();
+    Enemy e3 = new Enemy(x + xRange, y + yRange);
+    scenePlay.enemies.add(e3);
+    RandomizeEnemySpawn();
+    Enemy e4 = new Enemy(x + xRange, y + yRange);
+    scenePlay.enemies.add(e4);
   }
   
   void update() {
-    
+   
     // COLLISION WITH TOP DOOR
     if(scenePlay.player.checkCollision(d1)) {
       if(!topWall) {
@@ -99,6 +111,7 @@ class Room {
         Room r = new Room(x, y - h + wallHeight/2);
         scenePlay.rooms.add(r);
         r.bottomWall = true;
+        scenePlay.playerIframes = 2;
       }
     }
     
@@ -109,6 +122,7 @@ class Room {
         Room r = new Room(x + w - wallWidth/2 + gapSize/2, y);
         scenePlay.rooms.add(r);
         r.leftWall = true;
+        scenePlay.playerIframes = 2;
       }
     }
     
@@ -120,6 +134,7 @@ class Room {
         Room r = new Room(x, y + h - gapSize + wallHeight/2);
         scenePlay.rooms.add(r);
         r.topWall = true;
+        scenePlay.playerIframes = 2;
       }
     }
     
@@ -130,10 +145,21 @@ class Room {
         Room r = new Room(x - w + wallWidth/2 - gapSize/2, y);
         scenePlay.rooms.add(r);
         r.rightWall = true;
+        scenePlay.playerIframes = 2;
       }
     }
     
-  }  
+    //if(enemyCount <= 0){
+    // println("roomComplete"); 
+    //}
+    
+  }
+  
+  void RandomizeEnemySpawn() {
+   yRange = random(100, 450);
+   xRange = random(100, 850); 
+  }
+  
 }
   
   

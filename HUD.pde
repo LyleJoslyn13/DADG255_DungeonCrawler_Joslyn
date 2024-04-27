@@ -5,7 +5,7 @@ class HUD {
   boolean handle = false;
   
   HUD() {
-    Button pause = new Button(width - 175, 75, "PAUSE");
+    Button pause = new Button(width - 175, 75, "STORE");
     buttons.add(pause);
   }
   
@@ -17,7 +17,7 @@ class HUD {
      if(b.isClicked()) {
        b.currentColor = b.pressedColor;
        switch(b.buttonName) {
-         case "PAUSE":
+         case "STORE":
          if(handle == false){
          switchToPause();
          handle = true;
@@ -39,7 +39,10 @@ class HUD {
     for(int i = 0; i < buttons.size(); i++) {
      Button b = buttons.get(i);
      b.draw();
-    
+     
+     fill(0);
+     textSize(30);
+     text(scenePlay.player.moneyCount + " Coins", 100, 100);
   }
   
 }
@@ -80,6 +83,7 @@ class Button {
    textSize(18);
    text(buttonName, x, y);
    noStroke();
+   
  }
  
  boolean isClicked() {

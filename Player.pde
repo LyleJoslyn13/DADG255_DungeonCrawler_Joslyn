@@ -1,13 +1,16 @@
 class Player extends AABB {
- 
-  int level = 1;
+  
+  int r = 0, g = 200, b = 0;
   
   float burstCD = .35;
   float gunCD = .1;
   int numBursts = 3;
+  
   boolean isBursting;
   boolean isLighting;
   boolean isShooting;
+  
+  int moneyCount = 0;
   
   Player(float xPos, float yPos){ 
    x = xPos;
@@ -56,11 +59,22 @@ class Player extends AABB {
     velocity.x *= 0.95;
     velocity.y *= 0.95;
     
+    if(g >= 200) {
+      g = 200;
+      r = 0;
+      scenePlay.isFullHealth = true;
+      println("fullHealth");
+    }
+    
+    if(g < 200) scenePlay.isFullHealth = false;
+    
+    if(g <= 0) isDead = true;
+    
     super.update();
   }
   
   void draw() {
-    fill(#FF2483);
+    fill(r,g,b);
     pushMatrix();
     translate(x, y);
     rotate(angle);
@@ -69,35 +83,38 @@ class Player extends AABB {
   }
   
   void spawnRocketBurst() {
-   if(isBursting) {
-    burstCD -= dt;
-    if(burstCD <= 0 ) {
-     numBursts--;
-     if(numBursts > 0) {
-       //SPAWN
-       for (int i = 0; i< 4; i++) {
-        Rocket r = new Rocket(x, y, angle);
-        scenePlay.rockets.add(r);
+    if(scenePlay.isRocket) {
+     if(isBursting) {
+      burstCD -= dt;
+      if(burstCD <= 0 ) {
+       numBursts--;
+       if(numBursts > 0) {
+         //SPAWN
+         for (int i = 0; i< 4; i++) {
+          Rocket r = new Rocket(x, y, angle);
+          scenePlay.rockets.add(r);
+          }
+         burstCD = 0.35;
+         } else {
+         numBursts = 3;
+         isBursting = false;
         }
-       burstCD = 0.35;
-       } else {
-       numBursts = 3;
-       isBursting = false;
+       }
       }
-     }
     }
    }
    
    void spawnFlames(){
-     if(isLighting){
-      Flamethrower f1 = new Flamethrower(x, y, angle);
-       scenePlay.flamethrowers.add(f1);
-      Flamethrower f2 = new Flamethrower(x, y, angle + .1);
-       scenePlay.flamethrowers.add(f2);
-      Flamethrower f3 = new Flamethrower(x, y, angle - .1);
-       scenePlay.flamethrowers.add(f3);
-    }
-    
+     if(scenePlay.isFlamethrower) {
+       if(isLighting){
+        Flamethrower f1 = new Flamethrower(x, y, angle);
+         scenePlay.flamethrowers.add(f1);
+        Flamethrower f2 = new Flamethrower(x, y, angle + .1);
+         scenePlay.flamethrowers.add(f2);
+        Flamethrower f3 = new Flamethrower(x, y, angle - .1);
+         scenePlay.flamethrowers.add(f3);
+      }
+     }
   }
   
   void spawnMachineGun(){

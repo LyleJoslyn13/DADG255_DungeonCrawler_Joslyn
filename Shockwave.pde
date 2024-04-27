@@ -23,7 +23,6 @@ class Shockwave {
     
     for(int i = 0; i< enemiesCopy.size(); i++) {
      Enemy e = enemiesCopy.get(i);
-     e.update();
      
      if(checkCollision(this, e)){
        e.isDead = true;
